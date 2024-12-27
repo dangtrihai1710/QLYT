@@ -153,19 +153,7 @@
     </None>
   </ItemGroup>
   <!-- Project References -->
-<<<<<<< HEAD
-=======
-  <ItemGroup>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{C0AE341D-EF0D-4A52-A564-062B3ACAF4F9}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QuanLyYTe\BUS.csproj">
-      <Project>{ef37c34a-3642-49d3-a42c-deb9061ed15a}</Project>
-      <Name>BUS</Name>
-    </ProjectReference>
-  </ItemGroup>
->>>>>>> 66ad921a327e8ea2277e104373d43eedd483ef81
+
   <!-- Import Targets -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
