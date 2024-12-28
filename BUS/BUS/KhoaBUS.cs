@@ -3,7 +3,7 @@ using System.Data;
 using DAL.DAL;
 using DTO.Entities;
 
-namespace QuanLyYTe.BUS
+namespace BUS.BUS
 {
     public class KhoaBUS
     {
@@ -14,24 +14,24 @@ namespace QuanLyYTe.BUS
             khoaDAL = new KhoaDAL();
         }
 
-        public List<Khoa> GetAllKhoa()
+        public List<Khoa> LayDanhSachKhoa()
         {
-            return khoaDAL.LayDanhSachKhoa();
+            return khoaDAL.LayDanhSach();
         }
 
-        public bool AddKhoa(int maKhoa, string tenKhoa, string moTa)
+        public bool ThemKhoa(Khoa khoa)
         {
-            return khoaDAL.ThemKhoa(maKhoa, tenKhoa, moTa);
+            return khoaDAL.Them(khoa);
         }
 
-        public bool UpdateKhoa(int maKhoa, string tenKhoa, string moTa)
+        public bool SuaKhoa(Khoa khoa)
         {
-            return khoaDAL.CapNhatKhoa(maKhoa, tenKhoa, moTa);
+            return khoaDAL.Sua(khoa);
         }
 
-        public bool DeleteKhoa(int maKhoa)
+        public bool XoaKhoa(int maKhoa)
         {
-            return khoaDAL.XoaKhoa(maKhoa); 
+            return khoaDAL.Xoa(maKhoa); 
         }
     }
 }

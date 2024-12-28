@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DAL.DAL;
 using DTO.Entities;
 
-namespace QuanLyYTe.BUS
+namespace BUS.BUS
 {
     public class DonThuocBUS
     {
@@ -15,48 +15,33 @@ namespace QuanLyYTe.BUS
         }
 
         // Thêm đơn thuốc
-        public bool ThemDonThuoc(int maDonThuoc, int? maKhamBenh, DateTime ngayKeDon, string ghiChu)
+        public bool ThemDonThuoc(DonThuoc donThuoc)
         {
-            DonThuoc donThuoc = new DonThuoc
-            {
-                MaDonThuoc = maDonThuoc,
-                MaKhamBenh = maKhamBenh,
-                NgayKeDon = ngayKeDon,
-                GhiChu = ghiChu
-            };
-
-            return donThuocDAL.ThemDonThuoc(donThuoc);
+            return donThuocDAL.Them(donThuoc);
         }
 
         // Sửa đơn thuốc
-        public bool SuaDonThuoc(int maDonThuoc, int? maKhamBenh, DateTime ngayKeDon, string ghiChu)
+        public bool SuaDonThuoc(DonThuoc donThuoc)
         {
-            DonThuoc donThuoc = new DonThuoc
-            {
-                MaDonThuoc = maDonThuoc,
-                MaKhamBenh = maKhamBenh,
-                NgayKeDon = ngayKeDon,
-                GhiChu = ghiChu
-            };
-
-            return donThuocDAL.SuaDonThuoc(donThuoc);
+            return donThuocDAL.Sua(donThuoc);
         }
 
         // Xóa đơn thuốc
         public bool XoaDonThuoc(int maDonThuoc)
         {
-            return donThuocDAL.XoaDonThuoc(maDonThuoc);
+            return donThuocDAL.Xoa(maDonThuoc);
         }
 
         // Tìm kiếm đơn thuốc
         public List<DonThuoc> TimKiemDonThuoc(string keyword)
         {
-            return donThuocDAL.TimKiemDonThuoc(keyword);
+            return donThuocDAL.TimKiem(keyword);
         }
 
+        // Lấy danh sách đơn thuốc
         public List<DonThuoc> LayDanhSachDonThuoc()
         {
-            return donThuocDAL.LayDanhSachDonThuoc();
+            return donThuocDAL.LayDanhSach();
         }
 
     }

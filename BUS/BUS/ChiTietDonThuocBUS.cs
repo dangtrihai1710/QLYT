@@ -2,7 +2,7 @@
 using DAL.DAL;
 using DTO.Entities;
 
-namespace QuanLyYTe.BUS
+namespace BUS.BUS
 {
     public class ChiTietDonThuocBUS
     {
@@ -14,46 +14,27 @@ namespace QuanLyYTe.BUS
         }
 
         // Thêm chi tiết đơn thuốc
-        public bool ThemChiTietDonThuoc(int maChiTiet, int maDonThuoc, string tenThuoc, string lieuLuong, int? soLuong, string cachDung)
+        public bool ThemChiTietDonThuoc(ChiTietDonThuoc chiTiet)
         {
-            ChiTietDonThuoc chiTiet = new ChiTietDonThuoc
-            {
-                MaChiTiet = maChiTiet,
-                MaDonThuoc = maDonThuoc,
-                TenThuoc = tenThuoc,
-                LieuLuong = lieuLuong,
-                SoLuong = soLuong,
-                CachDung = cachDung
-            };
-
-            return chiTietDonThuocDAL.ThemChiTietDonThuoc(chiTiet);
+            return chiTietDonThuocDAL.Them(chiTiet);
         }
 
         // Sửa chi tiết đơn thuốc
-        public bool SuaChiTietDonThuoc(int maChiTiet, int maDonThuoc, string tenThuoc, string lieuLuong, int? soLuong, string cachDung)
+        public bool SuaChiTietDonThuoc(ChiTietDonThuoc chiTiet)
         {
-            ChiTietDonThuoc chiTiet = new ChiTietDonThuoc
-            {
-                MaChiTiet = maChiTiet,
-                MaDonThuoc = maDonThuoc,
-                TenThuoc = tenThuoc,
-                LieuLuong = lieuLuong,
-                SoLuong = soLuong,
-                CachDung = cachDung
-            };
-
-            return chiTietDonThuocDAL.SuaChiTietDonThuoc(chiTiet);
+            return chiTietDonThuocDAL.Sua(chiTiet);
         }
 
         // Xóa chi tiết đơn thuốc
         public bool XoaChiTietDonThuoc(int maChiTiet)
         {
-            return chiTietDonThuocDAL.XoaChiTietDonThuoc(maChiTiet);
+            return chiTietDonThuocDAL.Xoa(maChiTiet);
         }
 
+        // Lấy danh sách chi tiết đơn thuốc
         public List<ChiTietDonThuoc> LayDanhSachChiTietDonThuoc()
         {
-            return chiTietDonThuocDAL.LayDanhSachChiTietDonThuoc();
+            return chiTietDonThuocDAL.LayDanhSach();
         }
     }
 }

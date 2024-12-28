@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace DAL.DAL
      public class KhamBenhDAL
     {
         private string connectionString = "DBContextYT";
-        public bool ThemKhamBenh(int maBenhNhan, int maBacSi, DateTime ngayKham, string chanDoan, string thuoc, string ghiChu)
+        public bool Them(KhamBenh khamBenh)
         {
             string query = @"
                 INSERT INTO KhamBenh (MaBenhNhan, MaBacSi, NgayKham, ChanDoan, Thuoc, GhiChu)
@@ -22,12 +23,12 @@ namespace DAL.DAL
                 {
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@MaBenhNhan", maBenhNhan);
-                    command.Parameters.AddWithValue("@MaBacSi", maBacSi);
-                    command.Parameters.AddWithValue("@NgayKham", ngayKham);
-                    command.Parameters.AddWithValue("@ChanDoan", chanDoan);
-                    command.Parameters.AddWithValue("@Thuoc", thuoc);
-                    command.Parameters.AddWithValue("@GhiChu", ghiChu);
+                    command.Parameters.AddWithValue("@MaBenhNhan", khamBenh.MaBenhNhan);
+                    command.Parameters.AddWithValue("@MaBacSi", khamBenh.MaBacSi);
+                    command.Parameters.AddWithValue("@NgayKham", khamBenh.NgayKham);
+                    command.Parameters.AddWithValue("@ChanDoan", khamBenh.ChanDoan);
+                    command.Parameters.AddWithValue("@Thuoc", khamBenh.Thuoc);
+                    command.Parameters.AddWithValue("@GhiChu", khamBenh.GhiChu);
 
                     int rowsAffected = command.ExecuteNonQuery();
                     return rowsAffected > 0;

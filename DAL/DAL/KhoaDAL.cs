@@ -11,10 +11,10 @@ namespace DAL.DAL
 {
     public class KhoaDAL
     {
-        private string connectionString = "YourConnectionStringHere";
+        private string connectionString = "DBContextYT";
 
         // Lấy danh sách tất cả các khoa
-        public List<Khoa> LayDanhSachKhoa()
+        public List<Khoa> LayDanhSach()
         {
             List<Khoa> danhSachKhoa = new List<Khoa>();
 
@@ -53,7 +53,7 @@ namespace DAL.DAL
         }
 
         // Thêm khoa
-        public bool ThemKhoa(int maKhoa, string tenKhoa, string moTa)
+        public bool Them(Khoa khoa)
         {
             string query = @"
                 INSERT INTO Khoa (MaKhoa, TenKhoa, MoTa)
@@ -61,9 +61,9 @@ namespace DAL.DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaKhoa", maKhoa);
-                command.Parameters.AddWithValue("@TenKhoa", tenKhoa);
-                command.Parameters.AddWithValue("@MoTa", moTa);
+                command.Parameters.AddWithValue("@MaKhoa", khoa.MaKhoa);
+                command.Parameters.AddWithValue("@TenKhoa", khoa.TenKhoa);
+                command.Parameters.AddWithValue("@MoTa", khoa.MoTa);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -72,18 +72,18 @@ namespace DAL.DAL
         }
 
         // Sửa khoa
-        public bool CapNhatKhoa(int maKhoa, string tenKhoa, string moTa)
+        public bool Sua(Khoa khoa)
         {
             string query = @"
-                UPDATE Khoa
-                SET TenKhoa = @TenKhoa, MoTa = @MoTa
-                WHERE MaKhoa = @MaKhoa";
+            UPDATE Khoa
+            SET TenKhoa = @TenKhoa, MoTa = @MoTa
+            WHERE MaKhoa = @MaKhoa";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaKhoa", maKhoa);
-                command.Parameters.AddWithValue("@TenKhoa", tenKhoa);
-                command.Parameters.AddWithValue("@MoTa", moTa);
+                command.Parameters.AddWithValue("@MaKhoa", khoa.MaKhoa);
+                command.Parameters.AddWithValue("@TenKhoa", khoa.TenKhoa);
+                command.Parameters.AddWithValue("@MoTa", khoa.MoTa);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -91,8 +91,9 @@ namespace DAL.DAL
             }
         }
 
+
         // Xóa khoa
-        public bool XoaKhoa(int maKhoa)
+        public bool Xoa(int maKhoa)
         {
             string query = "DELETE FROM Khoa WHERE MaKhoa = @MaKhoa";
             using (SqlConnection connection = new SqlConnection(connectionString))

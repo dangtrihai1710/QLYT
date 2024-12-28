@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DAL.DAL;
 using DTO.Entities;
 
-namespace QuanLyYTe.BUS
+namespace BUS.BUS
 {
     public class BenhNhanBUS
     {
@@ -15,44 +15,21 @@ namespace QuanLyYTe.BUS
         }
 
         // Thêm bệnh nhân
-        public bool ThemBenhNhan(int maBenhNhan, string hoTen, DateTime? ngaySinh, string gioiTinh, string diaChi, string soDienThoai, string cmndCccd, DateTime? ngayDangKy)
+        public bool ThemBenhNhan(BenhNhan benhNhan)
         {
-            BenhNhan benhNhan = new BenhNhan
-            {
-                MaBenhNhan = maBenhNhan,
-                HoTen = hoTen,
-                NgaySinh = ngaySinh,
-                GioiTinh = gioiTinh,
-                DiaChi = diaChi,
-                SoDienThoai = soDienThoai,
-                CMND_CCCD = cmndCccd,
-                NgayDangKy = ngayDangKy ?? DateTime.Now
-            };
-
-            return benhNhanDAL.ThemBenhNhan(benhNhan);
+            return benhNhanDAL.Them(benhNhan);
         }
 
         // Sửa thông tin bệnh nhân
-        public bool SuaBenhNhan(int maBenhNhan, string hoTen, DateTime? ngaySinh, string gioiTinh, string diaChi, string soDienThoai, string cmndCccd)
+        public bool SuaBenhNhan(BenhNhan benhNhan)
         {
-            BenhNhan benhNhan = new BenhNhan
-            {
-                MaBenhNhan = maBenhNhan,
-                HoTen = hoTen,
-                NgaySinh = ngaySinh,
-                GioiTinh = gioiTinh,
-                DiaChi = diaChi,
-                SoDienThoai = soDienThoai,
-                CMND_CCCD = cmndCccd
-            };
-
-            return benhNhanDAL.SuaBenhNhan(benhNhan);
+            return benhNhanDAL.Sua(benhNhan);
         }
 
         // Xóa bệnh nhân
         public bool XoaBenhNhan(int maBenhNhan)
         {
-            return benhNhanDAL.XoaBenhNhan(maBenhNhan);
+            return benhNhanDAL.Xoa(maBenhNhan);
         }
 
         // Lấy lịch sử khám bệnh
@@ -61,9 +38,10 @@ namespace QuanLyYTe.BUS
             return benhNhanDAL.LayLichSuKhamBenh(maBenhNhan);
         }
 
+        // Lấy danh sách bệnh nhân
         public List<BenhNhan> LayDanhSachBenhNhan()
         {
-            return benhNhanDAL.LayDanhSachBenhNhan();
+            return benhNhanDAL.LayDanhSach();
         }
     }
 }

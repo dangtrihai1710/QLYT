@@ -2,7 +2,7 @@
 using DTO.Entities;
 using System.Collections.Generic;
 
-namespace QuanLyYTe.BUS
+namespace BUS.BUS
 {
     public class BacSiBUS
     {
@@ -14,48 +14,34 @@ namespace QuanLyYTe.BUS
         }
 
         // Thêm bác sĩ
-        public bool ThemBacSi(int maBacSi, string hoTen, int? maKhoa, string soDienThoai, string email)
+        public bool ThemBacSi(BacSi bacSi)
         {
-            return bacSiDAL.ThemBacSi(new DTO.Entities.BacSi
-            {
-                MaBacSi = maBacSi,
-                HoTen = hoTen,
-                MaKhoa = maKhoa,
-                SoDienThoai = soDienThoai,
-                Email = email
-            });
+            return bacSiDAL.Them(bacSi);
         }
 
         // Sửa bác sĩ
-        public bool SuaBacSi(int maBacSi, string hoTen, int? maKhoa, string soDienThoai, string email)
+        public bool SuaBacSi(BacSi bacSi)
         {
-            return bacSiDAL.SuaBacSi(new DTO.Entities.BacSi
-            {
-                MaBacSi = maBacSi,
-                HoTen = hoTen,
-                MaKhoa = maKhoa,
-                SoDienThoai = soDienThoai,
-                Email = email
-            });
+            return bacSiDAL.Sua(bacSi);
         }
 
         // Xóa bác sĩ
         public bool XoaBacSi(int maBacSi)
         {
-            return bacSiDAL.XoaBacSi(maBacSi);
+            return bacSiDAL.Xoa(maBacSi);
         }
 
         // Tìm kiếm bác sĩ
-        public List<DTO.Entities.BacSi> TimKiemBacSi(string keyword)
+        public List<BacSi> TimKiemBacSi(string keyword)
         {
-            return bacSiDAL.TimKiemBacSi(keyword);
+            return bacSiDAL.TimKiem(keyword);
         }
 
-        public List<BacSi> LayDanhSachDonThuoc()
+        // Lấy danh sách bác sĩ
+        public List<BacSi> LayDanhSachBacSi()
         {
-            return bacSiDAL.LayDanhSachBacSi();
+            return bacSiDAL.LayDanhSach();
         }
-
 
 
     }

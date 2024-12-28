@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DAL.DAL;
 using DTO.Entities;
 
-namespace QuanLyYTe.BUS
+namespace BUS.BUS
 {
     public class KhamBenhBUS
     {
@@ -14,9 +14,9 @@ namespace QuanLyYTe.BUS
             khamBenhDAL = new KhamBenhDAL();
         }
 
-        public bool ThemKhamBenh(int maBenhNhan, int maBacSi, DateTime ngayKham, string chanDoan, string thuoc, string ghiChu)
+        public bool ThemKhamBenh(KhamBenh khamBenh)
         {
-            return khamBenhDAL.ThemKhamBenh(maBenhNhan, maBacSi, ngayKham, chanDoan, thuoc, ghiChu);
+            return khamBenhDAL.Them(khamBenh);
         }
     }
 }

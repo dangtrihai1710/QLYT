@@ -10,7 +10,7 @@ namespace DAL.DAL
         private string connectionString = "DBContextYT"; // Thay bằng chuỗi kết nối thực tế
 
         // Thêm chi tiết đơn thuốc
-        public bool ThemChiTietDonThuoc(ChiTietDonThuoc chiTiet)
+        public bool Them(ChiTietDonThuoc chiTiet)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -42,7 +42,7 @@ namespace DAL.DAL
         }
 
         // Sửa chi tiết đơn thuốc
-        public bool SuaChiTietDonThuoc(ChiTietDonThuoc chiTiet)
+        public bool Sua(ChiTietDonThuoc chiTiet)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -75,7 +75,7 @@ namespace DAL.DAL
         }
 
         // Xóa chi tiết đơn thuốc
-        public bool XoaChiTietDonThuoc(int maChiTiet)
+        public bool Xoa(int maChiTiet)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -101,7 +101,7 @@ namespace DAL.DAL
         }
 
 
-        public List<ChiTietDonThuoc> LayDanhSachChiTietDonThuoc()
+        public List<ChiTietDonThuoc> LayDanhSach()
         {
             List<ChiTietDonThuoc> danhSachChiTiet = new List<ChiTietDonThuoc>();
 
